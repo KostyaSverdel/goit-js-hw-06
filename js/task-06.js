@@ -1,15 +1,9 @@
-const textInput = document.querySelector("#validation-input");
-console.log(textInput.getAttribute("data-length"));
-textInput.addEventListener("blur", (event) => {
-  if (event.target.value.length == textInput.getAttribute("data-length")) {
-    textInput.classList.add("valid");
-    if (textInput.classList.contains("invalid")) {
-      textInput.classList.remove("invalid");
-    }
+document.getElementById("validation-input").onblur = function () {
+  if (this.getAttribute("data-length") > this.value.length) {
+    this.classList.remove("valid");
+    this.classList.add("invalid");
   } else {
-    if (textInput.classList.contains("valid")) {
-      textInput.classList.remove("valid");
-    }
-    textInput.classList.add("invalid");
+    this.classList.remove("invalid");
+    this.classList.add("valid");
   }
-});
+};
